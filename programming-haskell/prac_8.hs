@@ -65,5 +65,26 @@ value2 :: Expr -> Int
 value2 e = eval2 e [] 
 
 
+data Nat = Zero | Succ Nat deriving Show
+
+
+nat2int :: Nat -> Int
+nat2int Zero     = 0
+nat2int (Succ n) = 1 + nat2int n
+
+int2nat :: Int -> Nat
+int2nat 0 = Zero
+int2nat n = (Succ (int2nat (n-1)))   
+
+add :: Nat -> Nat -> Nat
+add n Zero = n
+add n (Succ x) = add (Succ n) x 
+
+
+mult :: Nat -> Nat -> Nat
+mult _ Zero = Zero
+mult Zero _ = Zero
+mult m (Succ Zero) = m
+mult m n = 
 
 
